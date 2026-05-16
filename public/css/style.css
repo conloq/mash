@@ -1,0 +1,1061 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('reset.css');
+
+:root{
+    --roboto: 'Roboto', sans-serif;
+    --poppins: 'Poppins', sans-serif;
+    --marrom: #4E342E;
+    --laranja: #F57C00;
+    --branco: #FAFAFA;
+    --cinza: #F6F7F9;
+    --vermelho: #FF0000;
+}
+
+body{
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.3rem !important;
+    box-sizing: border-box;
+}
+
+h1{
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+h2, h3, h4, h5, h6{
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.titulo{
+    font-size: 2rem;
+}
+
+label{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.subtitulo{
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+/* Login */
+
+.ctn-column{
+    object-fit: cover;
+    z-index: -2;
+    background-color: #4e342e;
+}
+.login-left{
+    background-color: #3c2823cb;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-fundo{
+    z-index: -1;
+    object-fit: cover;
+    width: 500px;
+    height: 500px;
+    opacity: 60%;
+}
+
+.text-login{
+    position: absolute;
+    top:35%;
+}
+
+.text-login-pm{
+    color: #fff;
+    font-size: 2.8rem;
+}
+.text-login-pm2{
+    font-size: 2rem;
+    display: flex;
+    justify-self: center;
+}
+.text-login-sc{
+    padding-top: 8px;
+    color: #fff;
+}
+
+.form-login{
+    margin-top: 220px;
+}
+
+.form-login{
+    padding: .7rem 2rem;
+    font-size: .95rem;
+}
+
+.form-login .botao__padrao{
+    width: 13rem;
+    height: 3.5rem;
+    font-size: 0.95rem;
+}
+
+.form-login label{
+    font-size: .95rem;
+}
+
+.img-porta{
+    width: 30px;
+    height: 30px;
+}
+
+.direito-conloq{
+    font-size: .95rem;
+}
+/* FIM LOGIN */
+
+/* CADASTRO */
+
+.form-cadastro{
+    padding: 1rem 2rem;
+    font-size: .95rem;
+}
+
+.conta{
+    color: #000;
+}
+
+.bg-marrom{
+    background-color: var(--marrom);
+    color: var(--marrom);
+}
+
+.bg-laranja{
+    background-color: var(--laranja);
+    color: white;
+}
+
+.btn.bg-laranja,
+.btn.bg-laranja:hover,
+.btn.bg-laranja:focus,
+.btn.bg-laranja:active {
+    background-color: var(--laranja);
+    color: white;
+    border-color: var(--laranja);
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.bg-cinza{
+    color: #000;
+    background-color: var(--cinza);
+}
+
+.bg-branco{
+    color: #000;
+    background-color: var(--branco);
+}
+
+.botao{
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.botao__padrao{
+    color: var(--branco);
+    padding: .5rem 2rem;
+    width: 15rem;
+    height: 4rem;
+}
+.botao__subtitulo{
+    font-size: .95rem;
+}
+
+.link__laranja{
+    color: var(--laranja);
+}
+
+.input-container{
+    position: relative;
+}
+
+.icon-absolute__left{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+}
+
+.icon-absolute__right{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+}
+
+.icons-absolute__right-olho{
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.input-container input{
+    padding: .7rem 40px .7rem 40px;
+}
+
+/* FIM CADASTRO */
+
+/* Usuario */
+
+.icon-mash{
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.mash-logo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+.container-usuario{
+    background-color: #00ffaa;
+}
+
+/* IA */
+
+.perfil-layout{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar-perfil{
+    padding: 2rem;
+    border-right: 1px solid #ececec;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.logo-sidebar{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+/* MENU */
+
+/* MENU */
+
+.menu-sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* LINK */
+
+.menu-link{
+    width: 100%;
+    min-height: 50px;
+    padding: 0 1rem;
+    border-radius: 14px;
+    transition: .2s ease;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+}
+
+/* GRID INTERNO */
+
+.menu-link .row{
+    width: 100%;
+    margin: 0;
+}
+
+/* TEXTO */
+
+.menu-link span{
+    color: #000;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: .2s ease;
+}
+
+/* ÍCONE */
+
+.menu-icon{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0);
+    transition: .2s ease;
+}
+
+/* HOVER */
+
+.menu-link:hover{
+    background-color: var(--laranja);
+}
+
+.menu-link:hover span{
+    color: #fff;
+}
+
+.menu-link:hover .menu-icon{
+    filter: brightness(0) invert(1);
+}
+
+/* ACTIVE */
+
+.menu-link.active{
+    background-color: var(--laranja);
+}
+
+.menu-link.active span{
+    color: #fff;
+}
+
+.menu-link.active .menu-icon{
+    filter: brightness(0) invert(1);
+}
+
+/* CONTEÚDO */
+
+.conteudo-perfil{
+    flex: 1;
+    padding: 2.5rem 3rem;
+    margin-left: 400px;
+}
+
+.topo-perfil{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.btn-sair{
+    border: 1px solid #ff4a4a;
+    background: transparent;
+    color: #ff4a4a;
+    border-radius: 12px;
+    padding: .8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-weight: 600;
+}
+
+.sidebar-receitas{
+    background-color: #fff;
+    min-height: 100vh;
+    border-right: 1px solid #ececec;
+    padding: 2.5rem 1.5rem;
+}
+
+.sidebar-receitas .nav-link{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: #000;
+    padding: .9rem 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.sidebar-receitas .nav-link:hover,
+.sidebar-receitas .nav-link.active{
+    background-color: var(--laranja);
+    color: #fff;
+}
+
+.menu-icon{
+    font-size: 1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-receitas .logo-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+}
+
+/* Receita */
+
+.topbar-receitas{
+    background-color: #4E342E;
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin-top: 0;
+    padding: .6rem 1rem;
+    min-height: 58px;
+    align-items: center;
+}
+
+.topbar-div{
+    margin-right: 15px;
+}
+
+.foto-perfil{
+    width: 50px;
+    height: 50px;
+    font-weight: 700;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.topbar-name {
+    font-size: 0.9rem;
+}
+
+.topbar-email {
+    font-size: 0.75rem;
+}
+
+.titulo-receita{
+    padding-top: 10px;
+    margin-left: 35px;
+}
+
+.receitas-card{
+    background-color: transparent;
+    border-radius: 0;
+    margin: 30px;
+    box-shadow: none;
+}
+
+.receitas-card .card-body{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.receita-header{
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 1.25rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.receita-item{
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.receita-item:last-child{
+    margin-bottom: 0;
+}
+
+.receita-col-nome{
+    flex: 0 0 25%;
+    min-width: 140px;
+    padding-right: 1rem;
+}
+
+.receita-col-timer{
+    flex: 0 0 20%;
+    min-width: 100px;
+    text-align: center;
+}
+
+.receita-col-temp-min{
+    flex: 0 0 20%;
+    min-width: 100px;
+    text-align: center;
+}
+
+.receita-col-temp-max{
+    flex: 0 0 20%;
+    min-width: 100px;
+    text-align: center;
+}
+
+.receita-col-actions{
+    flex: 0 0 15%;
+    min-width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.receita-col-actions .btn-add-receita{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 0;
+    line-height: 1;
+    border: none;
+    color: white;
+}
+
+.receita-col-actions .btn:not(.btn-add-receita){
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.btn-add-receita{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 0;
+    line-height: 1;
+    border: none;
+    color: white;
+}
+
+.receita-col-actions .btn{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 0;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .receita-header,
+    .receita-item {
+        padding: 1rem;
+    }
+
+    .receita-col-nome{
+        flex: 0 0 35%;
+    }
+
+    .receita-col-timer{
+        flex: 0 0 22%;
+        font-size: 0.9rem;
+    }
+
+    .receita-col-temp-min,
+    .receita-col-temp-max{
+        display: none;
+    }
+
+    .receita-col-actions{
+        flex: 0 0 43%;
+    }
+}
+
+.modal-criar-processo .modal-content{
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-criar-processo .modal-header{
+    padding-bottom: .5rem;
+}
+
+.modal-criar-processo .modal-title{
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.modal-criar-processo .btn-link{
+    color: #6c757d;
+}
+
+.modal-criar-processo .btn-link:hover{
+    color: #495057;
+    text-decoration: none;
+}
+
+.modal-criar-processo .form-control{
+    border-radius: 12px;
+    height: 52px;
+}
+
+.modal-criar-processo .btn.bg-laranja{
+    border-radius: 12px;
+    height: 52px;
+    font-weight: 600;
+}
+
+.btn-tab{
+    background-color: #fff;
+    color: var(--marrom);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    font-weight: 700;
+    transition: border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.btn-tab:hover,
+.btn-tab:focus{
+    color: var(--marrom);
+    border-color: #000;
+}
+
+.btn-tab-active{
+    border-color: var(--laranja) !important;
+    color: var(--laranja) !important;
+}
+
+.btn-tab-inactive{
+    border-color: #000 !important;
+    color: var(--marrom) !important;
+}
+
+/* Fim receita */
+
+@media (max-width: 991.98px) {
+    .sidebar-receitas{
+        width: 100%;
+        border-right: none;
+        min-height: auto;
+    }
+
+    .topbar-receitas{
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* CARD PERFIL */
+
+.card-perfil{
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.usuario-info{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.foto-usuario{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nome-usuario{
+    font-size: 2.3rem !important;
+    margin-bottom: .3rem;
+}
+
+.email-usuario{
+    font-size: 1rem;
+}
+
+.entrada-usuario{
+    text-align: right;
+}
+
+.entrada-label{
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.entrada-data{
+    font-size: 1rem;
+}
+
+/* GRID */
+
+.grid-perfil{
+    display: grid;
+    grid-template-columns: 470px 1fr;
+    gap: 2rem;
+}
+
+.titulo-secao{
+    font-size: 1.3rem !important;
+    margin-bottom: 1.5rem;
+}
+
+/* FORM */
+
+.formulario-perfil{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-perfil{
+    height: 58px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ececec;
+}
+
+.input-perfil img{
+    width: 22px;
+    margin-right: 1rem;
+}
+
+.input-perfil input{
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.acoes-perfil{
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.btn-alterar{
+    width: 180px;
+    height: 55px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--laranja);
+    color: #fff;
+    font-weight: 600;
+    transition: .2s;
+    font-size: 1rem;
+}
+
+.btn-salvar{
+    width: 200px;
+    height: 55px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--laranja);
+    color: #fff;
+    font-weight: 600;
+    transition: .2s;
+    font-size: 1rem;
+}
+
+.btn-excluir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 55px;
+    font-weight: 600;
+}
+
+/* BOTÃO SALVAR DESABILITADO */
+
+.btn-salvar:disabled{
+    background-color: #f4c89d;
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+/* BOTÃO ALTERAR DESABILITADO */
+
+.btn-alterar:disabled{
+    background-color: #f4c89d;
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+.input-perfil input:disabled{
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+/* LOG */
+
+.card-log{
+    border-radius: 12px;
+    padding: 2rem;
+    min-height: 400px;
+}
+
+.titulo-log{
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.cabecalho-log{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.5fr 1fr;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.linha-log{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.5fr 1fr;
+    margin-bottom: 2rem;
+    font-size: .95rem;
+}
+
+.linha-log small{
+    display: block;
+    color: #777;
+}
+
+.status-ok{
+    color: var(--laranja);
+    font-weight: 600;
+}
+
+.status-alerta{
+    color: var(--marrom);
+    font-weight: 600;
+}
+
+.containerLog{
+    width: auto;
+    height: 400px;
+}
+
+/* Fim usuario */
+
+/* SIDEBAR */
+.nav-pills .nav-link.active{
+    background-color: var(--laranja);
+}
+
+/* editarTemperatura */
+.editar-temperatura {
+    padding: 1.5rem;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.editar-temperatura-tab {
+    background-color: #fff;
+    color: var(--laranja);
+    border: 2px solid var(--laranja);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    min-width: 200px;
+    transition: .2s ease;
+    flex: 1;
+    box-shadow: none;
+}
+
+.editar-temperatura-tab:hover {
+    background-color: #fff;
+    color: var(--laranja);
+    border-color: var(--laranja);
+}
+
+.editar-temperatura-tab.active {
+    background-color: #fff;
+    border-color: #000;
+    color: #2c2c2c;
+}
+
+.editar-temperatura-card {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.predefinicoes-temperatura {
+    border: none;
+}
+
+.editar-temperatura-card h2 {
+    font-size: 1.4rem;
+    color: #2c2c2c;
+    font-weight: 700;
+}
+
+.controle-card {
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 18px;
+    padding: 0.85rem;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.controle-card-header {
+    font-weight: 700;
+    color: #4a3326;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.controle-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+}
+
+.controle-step {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.btn-controle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(245, 124, 0, 0.25);
+    border-radius: 14px;
+    background-color: #fff;
+    color: var(--laranja);
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    transition: .2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.btn-controle:hover {
+    background-color: var(--laranja);
+    color: #fff;
+    border-color: var(--laranja);
+    transform: translateY(-1px);
+}
+
+.valor-controle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    min-width: 90px;
+    text-align: center;
+}
+
+.btn-adicionar {
+    background-color: var(--laranja);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    max-width: 180px;
+    width: auto !important;
+    display: block;
+    margin: 1.25rem auto 0;
+}
+
+.btn-adicionar:hover {
+    background-color: #e96b00;
+}
+
+.predefinicoes-temperatura {
+    background-color: #fff;
+    border: 1px solid #ececec;
+    color: #5f4b3b;
+}
+
+.tempo-ideal-card {
+    background-color: #fff;
+    border: 1px solid #ececec;
+    padding: 1rem;
+}
+
+.tempo-ideal-icon {
+    font-size: 1.25rem;
+    color: var(--laranja);
+}
+
+.tempo-ideal-card h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: #2c2c2c;
+}
+
+.tempo-ideal-box {
+    background-color: #fff;
+    border: 1px solid #d9d1c2;
+    border-radius: 14px;
+    padding: 0.85rem 0.5rem;
+}
+
+.tempo-ideal-value {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--marrom);
+}
+
+.tempo-ideal-label {
+    color: #7a5d46;
+    font-size: .78rem;
+    margin-top: .3rem;
+}
+
+@media (max-width: 991.98px) {
+    .editar-temperatura {
+        padding: 0 1rem 2rem;
+    }
+}
+
+/* Fim editarTemperatura */
+
+/* Fim sidebar */
+

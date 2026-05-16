@@ -1,0 +1,88 @@
+<%- include ('partials/header.ejs') %>
+<div class="container-fluid p-0 bg-cinza min-vh-100">
+  <div class="row gx-0">
+    <%- include('partials/sidebar.ejs')%>
+
+    <div class="col-12 col-lg-10">
+      <%- include('partials/topBar.ejs')%>
+      <div class="titulo-receita">
+        <h1 class="titulo mb-4">Receita</h1>
+      </div>
+      <div class="card border-0 receitas-card">
+        <div class="card-body p-0">
+          <!-- Header -->
+          <div class="receita-header">
+            <div class="receita-col-nome fw-semibold text-muted">Nome Processo</div>
+            <div class="receita-col-timer fw-semibold text-muted">Início do Timer</div>
+            <div class="receita-col-temp-min fw-semibold text-muted">Temperatura Mín.</div>
+            <div class="receita-col-temp-max fw-semibold text-muted">Temperatura Max.</div>
+            <div class="receita-col-actions">
+              <button title="Adicionar Receita" type="button" class="btn bg-laranja btn-add-receita" data-bs-toggle="modal" data-bs-target="#modalCriarProcesso">
+                <img src="/icons/mais.png" alt="">
+              </button>
+            </div>
+          </div>
+
+          <!-- Linha de processo -->
+          <% receitas.forEach(receita=> { %>
+
+          <div class="receita-item">
+
+            <div class="receita-col-nome">
+              <span class="fw-semibold">
+                <%= receita.nome%>
+              </span>
+            </div>
+
+            <% const temperatura = receita.temperaturas[0];%>
+
+            <% if(temperatura){%>
+            <div class="receita-col-timer">
+              <span><%= temperatura.inicializacao%></span>
+            </div>
+            <div class="receita-col-temp-min">
+              <span><%= temperatura.rampa_temperatura_minima%>°C</span>
+            </div>
+            <div class="receita-col-temp-max">
+              <span><%= temperatura.rampa_temperatura_maxima%>°C</span>
+            </div>
+            <%}%>
+            <div class="receita-col-actions">
+              <a href="/receita/temperatura/criar/<%= receita.id %>" class="btn btn-info btn-sm rounded text-white" title="Adicionar Temperatura">
+            + 🌡
+            </a>
+            <a href="/receita/temperatura/editar/<%= receita.id%>" class="btn btn-warning btn-sm rounded" title="Editar Temperatura">✎</a>
+            <form action="/receita/deletar" method="POST" onsubmit="return confirm('Tem certeza?')">
+              <input type="hidden" name="receitaId" value="<%= receita.id %>">
+              <button title="Excluir Receita" type="submit" class="btn btn-danger btn-sm rounded">✕</button>
+            </form>
+          </div>
+        </div>
+
+        <% })%>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalCriarProcesso" tabindex="-1" aria-labelledby="modalCriarProcessoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-criar-processo border-0 shadow-sm">
+          <div class="modal-header border-0 px-4 pt-4 pb-0">
+            <h5 class="modal-title fw-bold" id="modalCriarProcessoLabel">Criar processo</h5>
+            <button type="button" class="btn btn-link text-decoration-none text-muted" data-bs-dismiss="modal">← Voltar</button>
+          </div>
+          <div class="modal-body px-4 pb-4">
+            <form action="/receita/criar" method="post" id="formCriarProcesso">
+              <div class="mb-4">
+                <label for="processoNome" class="form-label fw-semibold">Nome da
+                  receita</label>
+                <input type="text" id="processoNome" name="nome" class="form-control" placeholder="Digite o nome do processo" required>
+              </div>
+              <button type="submit" class="btn bg-laranja text-white w-100">Adicionar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include ('partials/footer.ejs') %>

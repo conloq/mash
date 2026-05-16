@@ -1,0 +1,15 @@
+<div class="topbar-receitas mb-4 d-flex p-2 justify-content-end">
+    <div class="d-flex gap-2 align-items-center topbar-div">
+        <a href="/usuario">
+        <% if(usuario.url_imagem != null) {%>
+            <img class="foto-perfil" src="/uploads/<%= usuario.url_imagem%>" alt="Perfil">
+        <% } else { %>
+            <div class="foto-perfil"></div>
+        <% } %>
+        </a>
+        <div class="text-start d-none d-md-block">
+            <div class="fw-semibold text-white topbar-name"><%= usuario.nome%></div>
+            <div class="small text-white topbar-email"><%= usuario.userEmail%></div>
+        </div>
+    </div>
+</div>

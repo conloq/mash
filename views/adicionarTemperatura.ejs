@@ -1,0 +1,149 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="container-fluid p-0 bg-cinza min-vh-100">
+  <div class="row gx-0">
+    <%- include('partials/sidebar.ejs')%>
+
+    <div class="col-12 col-lg-10">
+      <%- include('partials/topBar.ejs')%>
+
+      <div class="px-4 px-xl-5 pb-5">
+
+        <!-- Tabs -->
+        <div class="row gx-3 mb-4">
+          <div class="col-12 col-md-6">
+            <a class="btn w-100 rounded-3 py-4 fw-bold fs-5 bg-white border border-2 shadow-sm" style="border-color: var(--laranja) !important; color: var(--laranja) !important;">
+              Temperatura
+            </a>
+          </div>
+          <div class="col-12 col-md-6">
+            <a class="btn w-100 rounded-3 py-4 fw-bold fs-5 bg-white border-0 text-dark shadow-sm">
+              Iodo
+            </a>
+          </div>
+        </div>
+
+        <form id="formTemperatura" action="/receita/temperatura/criar" method="POST">
+          <div class="row gx-4 gy-4">
+
+            <input type="hidden" name="receitaId" value="<%= receitaId %>">
+
+            <!-- Left Column -->
+            <div class="col-12 col-lg-7">
+              <div class="d-flex flex-column gap-4">
+
+                <!-- Rampa de Temperatura -->
+                <section>
+                  <h2 class="fw-bold mb-3" style="font-size: 1.1rem;">Rampa de temperatura
+                  </h2>
+                  <div class="row gx-3 gy-3">
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Temperatura
+                          Min.</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input required type="number" name="temperaturaMinima" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none">
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Temperatura
+                          Max.</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input required type="number" name="temperaturaMaxima" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none" </div>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+
+                <!-- Timers -->
+                <section>
+                  <div class="row gx-3 gy-3">
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Temporizador</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input required type="time" name="temporizador" step="1" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Inicialização</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input required type="time" name="inicializacao" step="1" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Adicionar Button -->
+                <div class="d-flex justify-content-center py-2">
+                  <button type="submit" class="btn text-white fw-bold rounded-3 px-5 py-3 fs-5 text-uppercase" style="background-color: var(--laranja); letter-spacing: 0.05em;">
+                    Adicionar
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-12 col-lg-5">
+              <div class="d-flex flex-column gap-4">
+
+                <!-- Limites Aceitáveis -->
+                <section>
+                  <h2 class="fw-bold mb-3" style="font-size: 1.1rem;">Limites aceitáveis
+                  </h2>
+                  <div class="row gx-3 gy-3">
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Temperatura
+                          Min.</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input type="number" name="limiteMinimoTemperatura" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none">
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="bg-white rounded-3 p-4" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                        <label class="form-label fw-bold text-center d-block small mb-2">Temperatura
+                          Max.</label>
+                        <div class="position-relative d-flex align-items-center border border-secondary-subtle rounded-2 overflow-hidden" style="height: 56px;">
+                          <input type="number" name="limiteMaximoTemperatura" class="form-control border-0 text-center fw-semibold fs-5 h-100 shadow-none">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Tempo Ideal -->
+                <section class="bg-white rounded-3 p-5 d-flex flex-column align-items-center justify-content-center" style="box-shadow: 0 4px 12px rgba(0,0,0,0.07);">
+                  <div class="d-flex align-items-center gap-2 mb-4">
+                    <svg width="28" height="28" fill="currentColor" viewBox="0 0 20 20" style="color: var(--laranja);">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                    </svg>
+                    <h3 class="fw-bold mb-0 fs-4">Tempo ideal</h3>
+                  </div>
+                  <input type="time" name="tempoIdeal" step="1" class="form-control border text-center fw-bold shadow-none fs-3" style="width: auto; border-color: #d1d5db !important; color: #4a4a4a;">
+                </section>
+
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- Pré-Definições Table -->
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs')%>

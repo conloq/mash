@@ -1,0 +1,185 @@
+<%- include ('partials/header.ejs') %>
+
+    <div class="container-fluid p-0 bg-cinza min-vh-100">
+        <div class="row gx-0">
+            <%- include ('partials/sidebar.ejs') %>
+
+                <div class="col-12 col-lg-10 px-4 py-4">
+
+                    <div class="d-flex justify-content-end mb-4">
+                        <a href="/usuario/sair">
+                            <button class="btn btn-outline-danger rounded-pill px-4 py-2">
+                                <img src="/icons/sair.png" style="width: 16px; height: 16px; margin-right: 8px;">
+                                Sair
+                            </button>
+                        </a>
+                    </div>
+
+                    <section class="card-perfil bg-branco rounded-4 shadow-sm mb-4 p-4">
+
+                        <div class="usuario-info">
+                            <div class="position-relative d-inline-block" style="cursor: pointer;"
+                                data-bs-toggle="modal" data-bs-target="#modalFoto">
+                                <img src="/uploads/<%= user.url_imagem%>" class="foto-usuario">
+                                <div class="position-absolute bottom-0 end-0 bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
+                                    style="width: 28px; height: 28px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                        viewBox="0 0 16 16">
+                                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                        <path
+                                            d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h1 class="nome-usuario">
+                                    <%= user.nome %>
+                                </h1>
+                                <p class="email-usuario">
+                                    <%= user.email %>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="entrada-usuario mt-4">
+
+                            <span class="entrada-label">
+                                ENTROU EM:
+                            </span>
+
+                            <span class="entrada-data">
+                                <%= user.createdAt.toLocaleDateString('pt-BR')%>
+                            </span>
+
+                        </div>
+
+                    </section>
+
+                    <section class="row g-4">
+
+                        <div class="col-12 col-lg-6">
+                            <div class="bg-branco rounded-4 shadow-sm p-4 h-100">
+                                <h2 class="titulo-secao mb-4">Informações do usuário</h2>
+
+                                <form action="/usuario/atualizar" method="post" class="formulario-perfil"
+                                    id="formPerfil">
+
+                                    <label for="nome">Nome Completo</label>
+                                    <div class="input-perfil mb-3">
+                                        <img src="/icons/usuario.png">
+                                        <input type="text" id="nome" name="nome" value="<%= user.nome%>" disabled>
+                                    </div>
+
+                                    <label for="email">E-mail</label>
+                                    <div class="input-perfil mb-3">
+                                        <img src="/icons/email.png">
+                                        <input type="email" id="email" name="email" value="<%= user.email%>" disabled>
+                                    </div>
+
+                                    <label for="telefone">Telefone</label>
+                                    <div class="input-perfil mb-3">
+                                        <img src="/icons/telefone.png">
+                                        <input type="tel" id="telefone" name="telefone" value="<%= user.telefone || ''%>" placeholder="Não informado" disabled>
+                                    </div>
+
+                                    <label for="senha">Senha</label>
+                                    <div class="input-perfil mb-4">
+                                        <img src="/icons/cadeado.png">
+                                        <input type="password" id="senha" name="senha" placeholder="********" disabled>
+                                    </div>
+
+                                    <div class="acoes-perfil d-flex flex-wrap">
+                                        <button type="button" class="btn-alterar" id="btnAlterar">Alterar Dados</button>
+                                        <button type="submit" class="btn-salvar" id="btnSalvar" disabled>Salvar alterações</button>
+                                        <a href="/usuario/deletar" class="btn btn-outline-danger btn-excluir" id="btnExcluir">Excluir usuario</a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="bg-branco rounded-4 shadow-sm p-4 h-100">
+                                <h2 class="titulo-secao mb-4">Últimos logins</h2>
+
+                                <div class="card-log">
+                                    <div class="titulo-log mb-3">
+                                        <img src="/icons/log.png">
+                                        <span>Log de Atividade</span>
+                                    </div>
+
+                                    <div class="cabecalho-log mb-3">
+                                        <span>Data & Hora</span>
+                                        <span>Endereço IP</span>
+                                        <span>Localidade</span>
+                                        <span>Status</span>
+                                    </div>
+
+                                    <div class="containerLog overflow-y-scroll ">
+                                        <% logUser.forEach(log => {%>
+                                            <div class="linha-log mb-3">
+                                                <div>
+                                                    <strong><%= log.data_hora.toLocaleDateString("pt-br")%></strong>
+                                                    <small><%= log.data_hora.toLocaleTimeString("pt-BR", {hour: '2-digit', minute: '2-digit', hour12: true})%></small>
+                                                </div>
+                                                <span><%= log.endereco_ip%></span>
+                                                <span><img src="/icons/localizacao.png" style="width: 16px; height: 16px; margin-right: 6px;"><%= log.localidade%></span>
+                                                <% if(log.status !== false){ %>
+                                                    <span><img src="/icons/check.png" style="width: 16px; height: 16px; margin-right: 6px;">Login seguro</span>
+                                                <% }else {%>
+                                                    <span><img src="/icons/atencao.png" style="width: 16px; height: 16px; margin-right: 6px;">Novo Dispositivo detectado!</span>
+                                                <% }%>
+                                            </div>
+                                        <% })%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Foto -->
+    <div class="modal fade" id="modalFoto" tabindex="-1" aria-labelledby="modalFotoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="modalFotoLabel">Alterar foto de perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+
+                <div class="modal-body p-3">
+                    <form action="/usuario/foto" method="POST" enctype="multipart/form-data" id="formFoto">
+
+                        <!-- Preview -->
+                        <div class="d-flex justify-content-center mb-4">
+                            <img id="previewFoto" src="/uploads/<%= user.url_imagem%>" class="rounded-circle shadow-sm"
+                                style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6;">
+                        </div>
+
+                        <!-- Input arquivo -->
+                        <label for="inputFoto" class="form-label fw-bold small">Escolher imagem</label>
+                        <input type="file" class="form-control" id="inputFoto" name="foto" accept="image/png, image/jpeg, image/webp">
+                        <small class="text-muted">JPG, PNG ou JPEG. Tamanho máximo: 2MB.</small>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <button type="button" class="btn btn-outline-secondary rounded-3 px-4"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn text-white fw-bold rounded-3 px-4"
+                                style="background-color: var(--laranja);">Salvar</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <%- include ('partials/footer.ejs') %>

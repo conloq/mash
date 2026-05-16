@@ -1,0 +1,88 @@
+<%- include ('partials/header.ejs') %>
+
+    <div class="container-fluid p-0 d-flex vh-100">
+
+        <div class="container d-flex flex-column gap-2 align-items-center justify-content-between" class="conta">
+
+            <div class="form-login container align-items-center bg-white d-flex flex-column gap-2" class="conta">
+
+                <form class="w-75 h-100" action="/cadastrar" method="post">
+                    <div class="text-center">
+                        <h2 class="titulo">Crie a sua conta</h2>
+                        <p class="subtitulo">Inicie a sua jornada conosco</p>
+                    </div>
+                    <div>
+                        <label class="form-label" for="nome">Nome Completo</label>
+                        <div class="input-container">
+                            <img class="icon-absolute__left" src="/icons/usuario.png" alt="Icone usuario">
+                            <input  type="text" name="nome" class="form-control form-cadastro rounded-3" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="email">Email</label>
+                        <div class="input-container">
+                            <img class="icon-absolute__left" src="/icons/email.png" alt="Icone usuario">
+                            <input type="email" class="form-control rounded-3" name="email" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="senha">Senha</label>
+                        <div class="input-container">
+                            <img class="icon-absolute__left" src="/icons/cadeado.png" alt="Icone usuario">
+                            <input type="password" class="form-control rounded-3" name="senha" required>
+                            <button id="botaoSenha" type="button"
+                                class="icon-absolute__right icons-absolute__right-olho">
+                                <img src="/icons/olho.png" alt="Icone olho">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="confirmarSenha">Confirmar Senha</label>
+                        <div class="input-container">
+                            <img class="icon-absolute__left" src="/icons/cadeado.png" alt="Icone usuario">
+                            <input type="password" class="form-control rounded-3">
+                            <button id="botaoConfirmarSenha" type="button"
+                                class="icon-absolute__right icons-absolute__right-olho">
+                                <img src="/icons/olho.png" alt="Icone olho">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" style="text-transform: uppercase;"
+                            class="botao botao__padrao bg-laranja fw-semibold">
+                            criar
+                            <img src="/icons/arrow.png" alt="Seta">
+                        </button>
+                        <p class="subtitulo mt-2">Já possui uma conta? <a href="/login"
+                                style="color: var(--laranja);">Entre</a></p>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div>
+                <p class="direito-conloq">@2026 Conloq. Todos os direitos reservados.</p>
+            </div>
+
+        </div>
+
+        <div class="col-7 p-0 ctn-column">
+            <div class="login-left">
+                <img src="/img/mash.png" alt="mashIMG" class="img-fundo">
+                <div class="text-login">
+                    <h1 class="text-login-pm">Bem-vindo de volta!
+                        <p class="subtitulo text-login-sc">A automação para o seu teste de iodo.
+                            Tenha a segurança que você precisa para seguir para a fervura no momento perfeito.
+                        </p>
+                    </h1>
+                </div>
+            </div>
+
+        </div>
+
+        <%- include ('partials/footer.ejs') %>
