@@ -1,370 +1,361 @@
-# MASH
+# Mash
 
-Sistema de apoio ao monitoramento da mosturação e à realização do teste de iodo na produção de cerveja artesanal.
+## Plataforma de Monitoramento da Etapa de Mosturação na Fabricação de Cerveja Artesanal
 
-> Projeto Integrador desenvolvido pela equipe Conloq para fins acadêmicos.
->
-> **Título do projeto:** Plataforma de Monitoramento da Etapa de Mosturação na Fabricação de Cerveja Artesanal.
+O **Mash** é um Projeto Integrador do curso de **Desenvolvimento de Software Multiplataforma da FATEC Registro**. A proposta é desenvolver uma plataforma para apoiar o acompanhamento da **mosturação** na produção de cerveja artesanal, com foco na interpretação do **teste de iodo por visão computacional**.
 
-## Sobre o projeto
+O sistema proposto utiliza **Python** e **OpenCV** para analisar imagens da reação entre o mosto e a solução de iodo, buscando tornar a interpretação mais **padronizada, objetiva e rastreável**. O resultado da análise é associado aos dados do lote e aos registros do processo de mosturação.
 
-O MASH propõe uma plataforma acessível para apoiar pequenos produtores no acompanhamento da etapa de mosturação, na qual o amido presente nos grãos é convertido em açúcares fermentáveis.
+> **Status do projeto:** em desenvolvimento e validação experimental. Os parâmetros definitivos de classificação ainda dependem dos testes de bancada.
 
-A proposta contempla o registro de informações do processo, o acompanhamento da temperatura, o apoio à interpretação do teste de iodo e a rastreabilidade das análises. A visão computacional com Python e OpenCV é prevista para auxiliar na identificação de amido residual por características de cor.
+---
 
-As funcionalidades descritas como proposta não devem ser tratadas como resultados comprovados. A versão atual do projeto está concentrada na especificação da proposta e na definição do protocolo de validação, ainda sem resultados experimentais medidos.
+## Sobre o problema
 
-## Objetivos
+Durante a mosturação, enzimas presentes no malte atuam na degradação do amido e na formação de açúcares fermentescíveis e dextrinas.
 
-- Apoiar o acompanhamento da etapa de mosturação;
-- Monitorar e registrar temperaturas do processo;
-- Registrar e consultar resultados do teste de iodo;
-- Apoiar a detecção de amido residual por visão computacional;
-- Reduzir erros de interpretação e anotações manuais;
-- Centralizar as informações do processo em uma interface web;
-- Facilitar a rastreabilidade das operações realizadas.
+O acompanhamento de temperatura e tempo ajuda a verificar se as condições programadas foram mantidas, mas essas variáveis, isoladamente, **não confirmam a ausência de amido residual** no mosto.
 
-## Estado atual
+Para essa verificação pode ser utilizado o **teste de iodo**. Uma amostra do mosto entra em contato com uma solução contendo iodo e a coloração observada fornece uma indicação qualitativa sobre a presença de estruturas amiláceas.
 
-O repositório contém uma aplicação web com servidor Express, páginas renderizadas com EJS, persistência em MySQL e modelos Sequelize para usuários, receitas, temperaturas, registros e teste de iodo.
+A interpretação manual, porém, pode sofrer influência de:
 
-A automação por visão computacional/OpenCV, o controle de temperatura e outros recursos previstos no escopo acadêmico devem ser considerados implementados somente quando estiverem disponíveis e validados no código do projeto.
+- iluminação;
+- reflexos;
+- tonalidades intermediárias;
+- características da própria amostra;
+- diferenças de percepção entre operadores;
+- ausência de um protocolo padronizado de captura;
+- falta de registro sistemático do teste ao longo dos lotes.
 
-O projeto ainda não apresenta resultados experimentais de desempenho, precisão, acurácia, redução de tempo, redução de desperdícios, melhoria de rendimento ou repetibilidade do produto.
+O Mash busca apoiar essa decisão por meio de processamento digital de imagens e registro estruturado dos resultados.
 
-## Tecnologias
+---
 
-### Backend
+## Objetivo
 
-- Node.js;
-- Express 5;
-- Sequelize;
-- EJS;
-- bcrypt;
-- express-session;
-- connect-session-sequelize;
-- Multer.
+Desenvolver uma plataforma de monitoramento para a produção de cerveja artesanal utilizando **visão computacional com Python e OpenCV** para automatizar a interpretação do teste de iodo durante a mosturação.
 
-### Banco de dados
+### Objetivos específicos
 
-- MySQL;
-- mysql2.
+- analisar imagens do teste de iodo por visão computacional;
+- detectar indícios da presença de amido residual no mosto;
+- aplicar processamento de imagem para diferenciar as colorações da reação;
+- reduzir a subjetividade da interpretação visual;
+- registrar leituras de forma rastreável;
+- relacionar o resultado da análise aos dados do lote e do processo;
+- disponibilizar os resultados em uma interface de acompanhamento;
+- validar o sistema por meio de testes práticos e métricas quantitativas.
 
-### Frontend
+---
 
-- HTML5;
-- CSS3;
-- JavaScript;
-- EJS.
+## Teste de iodo
 
-### Visão computacional prevista
+O teste de iodo é utilizado como uma verificação qualitativa da conversão do amido durante a mosturação.
 
-- Python;
-- OpenCV;
-- Processamento e análise de imagens do teste de iodo.
+De forma simplificada:
 
-> Os itens de visão computacional devem ser confirmados no código e nos testes antes de serem descritos como funcionalidades implementadas.
+| Coloração observada | Interpretação considerada no projeto |
+|---|---|
+| Violeta ou azul-escura | Presença de amido |
+| Intermediária | Conversão parcial ou resultado a ser avaliado |
+| Amarela ou ambarina | Ausência detectável de amido pelo teste |
 
-## Estrutura do projeto
+A plataforma não é proposta como substituta de uma análise laboratorial quantitativa. Seu objetivo é oferecer **apoio à decisão**, padronização e rastreabilidade para um procedimento que normalmente depende da avaliação visual do operador.
 
-```text
-.
-├── config/
-│   ├── associations.js
-│   ├── data-base.js
-│   ├── multer.js
-│   ├── sequelize-config.js
-│   └── session.js
-├── controller/
-│   ├── cadastroController.js
-│   ├── loginController.js
-│   ├── receitaController.js
-│   └── UsuarioController.js
-├── middleware/
-│   ├── globalInfoUserMiddleware.js
-│   └── guestMiddleware.js
-├── models/
-│   ├── Iodo.js
-│   ├── log.js
-│   ├── Receita.js
-│   ├── Temperatura.js
-│   └── Usuario.js
-├── public/
-│   ├── css/
-│   ├── icons/
-│   ├── img/
-│   ├── js/
-│   └── uploads/
-├── routes/
-│   ├── receitaRoutes.js
-│   ├── route.js
-│   └── usuarioRoutes.js
-├── services/
-│   └── bcrypt.js
-├── tests/
-├── tools/
-├── .gitignore
-├── index.js
-├── package.json
-└── package-lock.json
-```
+---
 
-## Pré-requisitos
-
-- Node.js instalado;
-- npm instalado;
-- MySQL em execução;
-- Git, caso o projeto seja obtido por clonagem.
-
-## Instalação e execução
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/kevinOLV2534/Sistema-MASH.git
-cd Sistema-MASH
-```
-
-Se o repositório já estiver disponível localmente, entre diretamente na pasta do projeto:
-
-```bash
-cd mash-audit
-```
-
-### 2. Instale as dependências
-
-```bash
-npm install
-```
-
-### 3. Configure o banco de dados
-
-Crie um banco MySQL para a aplicação:
-
-```sql
-CREATE DATABASE cervejaria;
-```
-
-Depois, confira e ajuste as credenciais e os parâmetros de conexão em:
+## Fluxo proposto de visão computacional
 
 ```text
-config/sequelize-config.js
+Amostra de mosto + solução de iodo
+                ↓
+        Captura da imagem
+                ↓
+         Pré-processamento
+                ↓
+    Correção de iluminação/ruído
+                ↓
+     Segmentação da região útil
+              (ROI)
+                ↓
+ Conversão e análise de espaços de cor
+          HSV / CIELab
+                ↓
+      Extração de características
+                ↓
+           Classificação
+                ↓
+ Resultado + registro associado ao lote
 ```
 
-Não versionem senhas, tokens ou outras credenciais no repositório. Para uma configuração de produção, prefira variáveis de ambiente e um arquivo local ignorado pelo Git.
+### Etapas previstas
 
-### 4. Inicie a aplicação
+1. **Aquisição da imagem**  
+   Registro fotográfico da amostra após a reação com a solução de iodo.
 
-```bash
-npm start
-```
+2. **Pré-processamento**  
+   Tratamento de ruídos e das variações de iluminação presentes na imagem.
 
-O script atual inicia o servidor por meio do Nodemon. Quando a aplicação estiver em execução, acesse:
+3. **Conversão de espaço de cor**  
+   Utilização de representações como **HSV** e **CIELab** para trabalhar separadamente com informações de cromaticidade e luminância.
+
+4. **Segmentação da ROI**  
+   Delimitação da região relevante da reação, descartando fundo, bordas do recipiente e áreas sem interesse para a classificação.
+
+5. **Extração de características**  
+   Obtenção de métricas numéricas dos canais cromáticos da região analisada.
+
+6. **Classificação**  
+   Comparação das características extraídas com os critérios definidos experimentalmente para indicar o estado da reação.
+
+7. **Registro do resultado**  
+   Associação da análise aos dados do lote e às demais informações registradas pelo sistema.
+
+> Os filtros, limiares de segmentação, canais cromáticos e regras finais de classificação ainda estão sujeitos à validação experimental.
+
+---
+
+## Protocolo de captura
+
+Para reduzir erros causados pelo ambiente, a metodologia propõe padronizar a captura das imagens.
+
+Entre os cuidados previstos estão:
+
+- iluminação controlada;
+- fundo neutro;
+- redução de reflexos diretos;
+- volume de amostra padronizado;
+- proporção constante entre mosto e solução de iodo;
+- intervalo constante entre mistura e fotografia;
+- câmera em posição fixa;
+- distância, foco, exposição e balanço de branco previamente definidos;
+- uso de referência branca ou cinza;
+- controles positivo e negativo durante as sessões de coleta.
+
+Essa padronização é importante porque variações de iluminação, geometria e reflexão podem reduzir a reprodutibilidade da classificação por imagem.
+
+---
+
+## Arquitetura proposta
+
+O artigo organiza a plataforma em quatro módulos principais:
 
 ```text
-http://localhost:3000
+┌─────────────────────────────┐
+│     Aquisição de dados      │
+│ imagens + dados do processo │
+└──────────────┬──────────────┘
+               ↓
+┌─────────────────────────────┐
+│ Processamento de imagem     │
+│     Python + OpenCV         │
+└──────────────┬──────────────┘
+               ↓
+┌─────────────────────────────┐
+│ Registro da mosturação      │
+│ lote + leituras + resultados│
+└──────────────┬──────────────┘
+               ↓
+┌─────────────────────────────┐
+│ Interface de acompanhamento │
+└─────────────────────────────┘
 ```
 
-## Testes e validação
+Na infraestrutura documentada, o servidor é responsável pelo processamento das análises, execução da aplicação **Flask** e armazenamento dos dados e resultados.
 
-A suíte atual contém testes do validador estrutural do MashOps. Execute:
+Dispositivos móveis podem ser utilizados para a captura das imagens e para acesso à aplicação.
 
-```bash
-npm test
-python -m compileall -q tools tests
-```
+---
 
-Para validar uma skill ou plugin sem executar o conteúdo inspecionado:
+## Funcionalidades documentadas
 
-```bash
-python tools/mashops_plugin_doctor.py /caminho/para/skill --json
-```
+Os artefatos de software representam funcionalidades como:
 
-O doctor é somente leitura: não instala dependências, não acessa a rede, não executa scripts do alvo e não corrige arquivos automaticamente. `PASS` significa apenas que os checks implementados não encontraram falhas; `REVIEW` exige inspeção manual.
+- cadastro e autenticação;
+- recuperação e redefinição de senha;
+- acesso ao painel;
+- envio da imagem do teste de iodo;
+- processamento da imagem;
+- classificação da reação;
+- exibição do resultado;
+- armazenamento do resultado;
+- consulta ao histórico de testes;
+- gerenciamento de lotes;
+- gerenciamento de receitas;
+- gerenciamento de configurações;
+- gerenciamento de perfil.
 
-Para a aplicação, a equipe também deve:
+A interface proposta também prevê a visualização dos resultados do teste e dos registros associados ao processo de mosturação.
 
-1. Executar a aplicação;
-2. Validar manualmente o fluxo alterado;
-3. Conferir os registros criados ou atualizados no banco;
-4. Verificar a integração entre rotas, controllers, models e views;
-5. Atualizar esta documentação quando o comportamento ou a configuração mudar.
+---
 
-## Equipe Conloq
+## Tecnologias e ferramentas
 
-| Integrante | Frente |
-| --- | --- |
-| João | Backend |
-| Jocieli | Artigo e documentação |
-| Kevin | Design |
-| Haimon | Frontend |
+### Plataforma
 
-Todos os integrantes participam das pesquisas e dos ensaios do projeto quando aplicável.
+| Área | Tecnologia / abordagem |
+|---|---|
+| Linguagem principal | Python |
+| Visão computacional | OpenCV |
+| Aplicação web / servidor | Flask |
+| Processamento cromático | HSV e CIELab |
+| Prototipação de interface | Figma |
+| Modelagem de software | UML |
+| Modelagem de dados | MER |
+| Versionamento | Git e GitHub |
 
-## Organização do trabalho
+> A documentação apresenta a modelagem conceitual do banco de dados, mas não define, nos documentos analisados, qual SGBD será adotado definitivamente.
 
-### Áreas
+### Website da equipe
 
-- **Backend:** API, banco de dados, OpenCV, processamento e regras de negócio;
-- **Frontend:** interface, integração com a API, formulários, upload e experiência de uso;
-- **Artigo:** artigo científico, documentação, referências e artefatos acadêmicos;
-- **Design:** Figma, identidade visual, landing page, pitch, banner e materiais visuais;
-- **Geral:** atividades que envolvem toda a equipe.
+O documento de artefatos também descreve uma **landing page da equipe**, separada da plataforma principal:
 
-### Status das tarefas
+| Área | Tecnologia |
+|---|---|
+| Estrutura | HTML5 |
+| Estilização | CSS3 |
+| Interatividade | JavaScript |
+| Responsividade | CSS |
+| Hospedagem | GitHub Pages |
+| Versionamento | Git e GitHub |
 
-- **Backlog:** tarefa identificada, mas ainda não priorizada;
-- **Ready:** tarefa definida, com responsável e informações suficientes para começar;
-- **In Progress:** tarefa em execução pelo responsável;
-- **In Review:** tarefa concluída pelo responsável e aguardando revisão de outro integrante;
-- **Testing / Validation:** tarefa revisada e em fase de testes ou validação;
-- **Done:** tarefa implementada, revisada, testada, aceita e documentada.
+---
 
-### Prioridade
+## Modelagem e artefatos
 
-- 🔴 **Alta:** funcionalidade crítica ou necessária para a próxima entrega;
-- 🟡 **Média:** tarefa importante, mas que não impede o funcionamento principal;
-- 🟢 **Baixa:** melhoria que pode ser realizada depois das funcionalidades essenciais.
+A documentação do projeto reúne os seguintes artefatos:
 
-### Tipos de tarefa
+- Diagrama de Casos de Uso;
+- Diagrama de Classes;
+- Diagrama de Objetos;
+- Modelo Entidade-Relacionamento (MER);
+- Business Model Canvas;
+- topologia e arquitetura de rede;
+- diagrama de infraestrutura;
+- diagrama de usabilidade;
+- documentação de UX/UI;
+- guia de estilos;
+- mapa do site da equipe;
+- especificações técnicas do website.
 
-- **Feature:** nova funcionalidade;
-- **Bug:** correção de algo que não está funcionando corretamente;
-- **Improvement:** melhoria de uma funcionalidade existente;
-- **Research:** pesquisa ou levantamento técnico/científico;
-- **Documentation:** artigo, documentação ou artefato acadêmico;
-- **Design:** atividade de UX/UI ou material visual;
-- **Test:** teste ou validação de funcionalidade.
+Esses artefatos complementam o artigo científico e descrevem diferentes perspectivas da solução, incluindo regras de negócio, dados, infraestrutura e experiência do usuário.
 
-### Critérios para mover uma tarefa para Done
+---
 
-Uma tarefa só deve ser movida para **Done** quando:
+## Validação planejada
 
-1. Foi implementada;
-2. Foi revisada;
-3. Foi testada;
-4. Está funcionando conforme o escopo definido;
-5. A documentação necessária foi atualizada.
+O projeto ainda não apresenta resultados experimentais concluídos. A validação proposta deverá utilizar:
 
-## Ferramentas de apoio com IA
+- matriz de confusão;
+- acurácia;
+- taxa de resultados inconclusivos;
+- repetibilidade;
+- concordância entre capturas;
+- tempo de resposta.
 
-As ferramentas de IA são auxiliares e não substituem a análise, a revisão e a decisão da equipe.
+### Metas documentadas
 
-### Artigo e documentação — Jocieli
+| Indicador | Meta proposta |
+|---|---:|
+| Acurácia das classificações conclusivas | ≥ 50% |
+| Resultados inconclusivos | ≤ 10% |
+| Concordância entre capturas repetidas da mesma amostra | ≥ 90% |
+| Tempo médio de resposta | ≤ 2 s |
+| Percentil 60 do tempo de resposta | ≤ 10 s |
+| Registro das leituras válidas | 100% |
 
-**Prism** — https://openai.com/pt-BR/prism/
+Esses valores são **metas de validação**, não resultados já alcançados.
 
-Uso recomendado:
+---
 
-- Apoio à escrita científica;
-- Revisão e melhoria do texto;
-- Organização das seções do artigo;
-- Trabalho colaborativo em LaTeX;
-- Apoio na busca e análise de literatura;
-- Revisão de citações e referências;
-- Organização da metodologia e dos resultados.
+## Limitações conhecidas
 
-As informações científicas devem sempre ser verificadas nas fontes originais.
+A própria proposta reconhece fatores que podem comprometer o resultado da análise:
 
-### Design e frontend — Kevin e Haimon
+- variações de iluminação;
+- reflexos na amostra ou no recipiente;
+- posicionamento inadequado da câmera;
+- diferenças de foco e exposição;
+- alterações no tempo entre mistura e captura;
+- amostras com coloração intermediária;
+- necessidade de calibração;
+- dependência de um protocolo de captura padronizado.
 
-**Open Design** — https://open-design.ai/pt-br/
+Por isso, o resultado da visão computacional deve ser tratado como ferramenta de apoio à verificação do teste de iodo.
 
-Uso recomendado:
+---
 
-- Explorar ideias de interface e referências visuais;
-- Apoiar a construção de telas, componentes e layouts;
-- Comparar a implementação com o design planejado;
-- Trabalhar responsividade e consistência visual;
-- Apoiar a criação da landing page, do pitch e de materiais visuais.
+## Documentação acadêmica
 
-As decisões finais de UX/UI devem ser revisadas pelo responsável de Design. O código gerado com auxílio de IA deve ser revisado e adaptado ao padrão do projeto Mash.
+O projeto é acompanhado por dois documentos principais.
 
-### Backend — João
+### Artigo científico
 
-**OpenCode** — https://opencode.ai/
+Apresenta:
 
-**Documentação:** https://opencode.ai/docs
+- contextualização da produção cervejeira;
+- problema de pesquisa;
+- objetivos;
+- estado da arte;
+- teste de iodo;
+- visão computacional;
+- processamento digital de imagens;
+- lacuna científica;
+- metodologia;
+- arquitetura proposta;
+- protocolo de aquisição;
+- estratégia de validação.
 
-Uso recomendado:
+### Artefatos do projeto de software
 
-- Criar e revisar APIs e CRUDs;
-- Trabalhar com banco de dados;
-- Debugar erros e criar testes;
-- Refatorar código;
-- Auxiliar na integração entre Flask, Python e OpenCV;
-- Revisar tratamento de erros e processamento de imagens.
+Apresenta:
 
-Outras ferramentas similares também podem ser utilizadas quando fizer sentido para a tarefa, como Codex, GitHub Copilot, Cursor ou Claude Code.
+- diagramas UML;
+- modelagem do banco de dados;
+- Canvas;
+- infraestrutura;
+- UX/UI;
+- guia de estilos;
+- website da equipe.
 
-### Opções gratuitas para a equipe
+---
 
-- **Top Tools AI:** https://top-tools-ai.com/docs
-- **InternLM:** https://internlm.intern-ai.org.cn/api/document?lang=zh
-- **OpenCode:** https://opencode.ai/docs/pt-br
+## Equipe
 
-Cada integrante deve utilizar sua própria API key. Chaves e tokens nunca devem ser enviados para o GitHub, incluídos no README ou compartilhados em canais públicos.
+Projeto desenvolvido por:
 
-## Boas práticas para uso de IA
+- **Haimon Cugler Vieira**
+- **João Alexandre Pinto Camargo**
+- **Jocieli Pontes Domingues da Silva**
+- **Kevin da Silva Oliveira**
 
-- Não utilizar código sem entender seu funcionamento;
-- Revisar todo código gerado antes de realizar commit;
-- Não inserir senhas, tokens, chaves de API ou informações sensíveis em ferramentas de IA;
-- Validar referências acadêmicas diretamente nas fontes originais;
-- Não utilizar referências bibliográficas, resultados ou funcionalidades inventados pela IA;
-- Registrar alterações importantes no GitHub;
-- Manter a documentação alinhada ao sistema realmente implementado;
-- Utilizar IA como ferramenta de apoio, e não como substituição da análise da equipe.
+**Curso:** Desenvolvimento de Software Multiplataforma  
+**Instituição:** Faculdade de Tecnologia do Estado de São Paulo, FATEC Registro  
+**Local:** Registro, SP  
+**Ano:** 2026
 
-## Convenção de commits
+---
 
-Use o formato:
+## Próximas etapas
 
-```text
-<tipo>: descrição curta da alteração
-```
+Com base na metodologia descrita nos documentos, as etapas seguintes incluem:
 
-Tipos permitidos:
+- definir experimentalmente os parâmetros de processamento;
+- validar os espaços de cor utilizados;
+- definir os limiares de classificação;
+- consolidar o protocolo de aquisição das imagens;
+- coletar amostras positivas, negativas e intermediárias;
+- executar testes de bancada;
+- comparar os resultados da plataforma com avaliações de referência;
+- medir acurácia, repetibilidade e taxa de inconclusivos;
+- avaliar o tempo de resposta;
+- integrar completamente o processamento de imagem à aplicação;
+- consolidar o histórico e a rastreabilidade dos lotes.
 
-- `feat`: nova funcionalidade;
-- `fix`: correção de erro;
-- `refactor`: reorganização sem mudança de comportamento;
-- `test`: criação ou alteração de testes;
-- `docs`: documentação;
-- `style`: formatação ou alteração visual sem mudança de lógica;
-- `chore`: configuração, dependências ou manutenção.
+---
 
-Exemplos:
-
-```bash
-git commit -m "feat: adicionar registro de teste de iodo"
-git commit -m "fix: validar receita associada ao lote"
-git commit -m "test: adicionar testes do CRUD de receitas"
-git commit -m "docs: atualizar instruções de instalação"
-```
-
-### Regras para commits
-
-- Usar uma descrição curta e objetiva;
-- Preferir verbo de ação claro;
-- Não incluir credenciais ou dados sensíveis;
-- Relacionar o commit à issue correspondente, quando aplicável;
-- Evitar misturar alterações de frentes diferentes;
-- Revisar e testar antes de realizar o commit.
-
-## Licença
-
-Este projeto é destinado a fins educacionais e acadêmicos.
-
-## Desenvolvedores
-
-- João Alexandre Pinto Camargo;
-- Kevin da Silva Oliveira;
-- Haimon Cugler Vieira;
-- Jocieli Pontes Domingues da Silva.
-
-> Este README descreve o estado conhecido do repositório e a proposta acadêmica. Novas funcionalidades só devem ser documentadas como implementadas após validação no código e nos testes correspondentes.
-
-## Fonte da atualização
-
-Conteúdo de referência: `message.txt`, fornecido pela equipe Conloq em 18/08/2026.
+<p align="center">
+  <strong>Mash</strong><br>
+  Visão computacional aplicada ao acompanhamento da mosturação cervejeira.
+</p>
