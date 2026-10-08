@@ -328,7 +328,7 @@ Apresenta:
 | Papel | Integrante |
 |---|---|
 | **Product Manager (PM)** | Haimon Cugler Vieira |
-| **Product Owner (PO)** | João Alexandre Pinto Camargo |
+| **Product Owner (PO)** | Team Lead |
 | **Desenvolvedores** | João Alexandre Pinto Camargo — Backend · Kevin da Silva Oliveira — Design/Frontend · Jocieli Pontes Domingues da Silva — Artigo e documentação · Haimon Cugler Vieira — Frontend |
 
 ### Integrantes
